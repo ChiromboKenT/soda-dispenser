@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import "./App.css";
+import './App.css';
+import Navigation from './components/navigation';
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="h-screen flex flex-col items-center px-6 bg-gray-900">
+      <Navigation />
+    </div>
+  );
 }
 
 export default App;
