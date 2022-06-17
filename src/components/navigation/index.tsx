@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import Icon from '../../shared/Icon';
 
-const Navigation = () => {
+const Navigation = ({
+  active,
+  setActive,
+}: {
+  active: number;
+  setActive: (index: number) => void;
+}) => {
   const menus = [
-    { name: 'Auto', icon: 'auto-outline', dis: 'translate-x-0' },
-    { name: 'Manual', icon: 'manual-outline', dis: 'translate-x-16' },
+    { name: 'Auto', icon: 'auto-outline', dis: 'translate-x-0', to: '/manual' },
+    {
+      name: 'Manual',
+      icon: 'manual-outline',
+      dis: 'translate-x-16',
+      to: '/auto',
+    },
   ];
-  const [active, setActive] = useState(0);
+
   return (
     <div className="bg-gray-900 pt-10 px-6 w-full">
       <div className="flex justify-between w-full bg-white h-[4.4rem] px-6 rounded-t-xl ">
@@ -33,7 +45,8 @@ const Navigation = () => {
           </div>
           {menus.map((menu, index) => (
             <li key={`menu-item-${index}`} className="w-16">
-              <a
+              <NavLink
+                to={menu.to}
                 className="flex flex-col text-center pt-6 "
                 onClick={() => setActive(index)}
               >
@@ -53,7 +66,7 @@ const Navigation = () => {
                 >
                   {menu.name}
                 </p>
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
