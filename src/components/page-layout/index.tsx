@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react';
 import MachineDisplay from '../machine-display';
+import Card from '../standard-elements/card';
 
 const PageLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="flex h-full   w-full bg-stone-200 p-6">
+    <div className="flex w-full p-8 h-full">
       <MachineDisplay />
       {children}
     </div>

@@ -33,9 +33,9 @@ const Carousel = ({ drinkData }: { drinkData: IDrinkData<any>[] }) => {
       />
       <div className="w-full">
         {drinkData.map((drink, index) => (
-          <div className="" key={`image-slide-${index}`}>
+          <div className="w-full" key={`image-slide-${index}`}>
             <img
-              className={`w-full aspect-square transition-all duration-200 ${
+              className={`max-w-full aspect-video transition-all duration-200 ${
                 active === index
                   ? 'visible duration-200  opacity-100'
                   : 'hidden opacity-0 delay-100 duration-150'
