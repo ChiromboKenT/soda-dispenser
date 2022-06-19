@@ -1,33 +1,33 @@
-import React, { useContext } from 'react';
-import { ManualContext } from '../../store/context/manual-context';
-import PageLayout from '../page-layout';
-import Card from '../standard-elements/card';
-import TargetControl from '../target-controls';
+import React, { useContext } from "react";
+import { ManualContext } from "../../store/context/manual-context";
+import PageLayout from "../page-layout";
+import Card from "../standard-elements/card";
+import TargetControl from "../target-controls";
 
 const Manual = () => {
   const { manualDispatch, target, current } = useContext(ManualContext)!;
 
   const handleOnClickDispatch = (value: number) => {
     manualDispatch({
-      type: 'dispense',
+      type: "dispense",
       payload: Math.floor(Math.random() * 5) + value,
     });
   };
   const handleValue = (value: number) => {
     if (value) {
       manualDispatch({
-        type: 'input',
+        type: "input",
         payload: value,
       });
     }
   };
   const getStatus = () => {
     if (current < target) {
-      return 'Below Target';
+      return "Below Target";
     } else if (current === target) {
-      return 'Target Achieved';
+      return "Target Achieved";
     } else {
-      return 'Above Target';
+      return "Above Target";
     }
   };
   return (
@@ -43,13 +43,13 @@ const Manual = () => {
         </Card>
 
         <div className="flex w-full mt-auto">
-          <Card direction="row" styles="bg-purple-200 mx-1">
+          <Card direction="row" styles="bg-purple-300 mx-1">
             <h1 className="text-purple-700 font-extrabold mr-4">
               Target Volume:
             </h1>
             <p className="font-xl text-center ">{`${target}ml`}</p>
           </Card>
-          <Card direction="row" styles="bg-purple-200 mx-1 ">
+          <Card direction="row" styles="bg-purple-300 mx-1 ">
             <h1 className="text-purple-700 font-extrabold mr-4">
               Current Volume:
             </h1>
@@ -57,7 +57,7 @@ const Manual = () => {
           </Card>
         </div>
         <div className="flex w-full mt-5">
-          <Card direction="row" styles="bg-purple-200 mx-1">
+          <Card direction="row" styles="bg-purple-300 mx-1">
             <h1 className="text-purple-700 font-extrabold mr-4">
               Remaining Volume:
             </h1>
@@ -65,7 +65,7 @@ const Manual = () => {
               {target - current < 0 ? 0 : target - current}ml
             </p>
           </Card>
-          <Card direction="row" styles="bg-purple-200 mx-1 ">
+          <Card direction="row" styles="bg-purple-300 mx-1 ">
             <h1 className="text-purple-700 font-extrabold mr-4">Status:</h1>
             <p className="font-xl"> {getStatus()}</p>
           </Card>
