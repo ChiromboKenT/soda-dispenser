@@ -5,14 +5,30 @@ import './App.css';
 import Auto from './components/auto';
 import Manual from './components/manual';
 import Navigation from './components/navigation';
+import ManualContextProvider from './store/context/manual-context';
+import AutoContextProvider from './store/context/auto-context';
 import NotFound from './utils/not-found';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Manual />} />
-        <Route path="/auto" element={<Auto />} />
+        <Route
+          index
+          element={
+            <ManualContextProvider>
+              <Manual />
+            </ManualContextProvider>
+          }
+        />
+        <Route
+          path="/auto"
+          element={
+            <AutoContextProvider>
+              <Auto />
+            </AutoContextProvider>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

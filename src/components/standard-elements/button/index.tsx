@@ -4,7 +4,9 @@ const Button = ({
   onClick,
   children,
   variant,
+  styles,
 }: {
+  styles?: string;
   variant: 'primary' | 'secondary' | 'outline';
   children: ReactNode;
   onClick: MouseEventHandler<HTMLButtonElement>;
@@ -16,7 +18,9 @@ const Button = ({
   };
   return (
     <button
-      className={`shadow-xl rounded-lg cursor-pointer px-3 py-2 border-[2px] ${buttonStyles[variant]} mx-5`}
+      className={`shadow-xl rounded-lg cursor-pointer px-3 py-2 border-[2px] ${
+        buttonStyles[variant]
+      } ${styles && styles}`}
       onClick={onClick}
     >
       {children}

@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AutoContext } from '../../store/context/auto-context';
+import { automode } from '../../utils/auto-funtion';
 import PageLayout from '../page-layout';
 import Card from '../standard-elements/card';
 import TargetControl from '../target-controls';
 
 const Auto = () => {
+  const { target, autoDispatch } = useContext(AutoContext)!;
+  const handleValue = (value: number) => {
+    if (value) {
+      autoDispatch({
+        type: 'input',
+        payload: value,
+      });
+    }
+  };
+  const getStatus = () => {
+    return target > 0 && automode(target) ? 'Yes' : 'No';
+  };
   return (
     <PageLayout>
       <Card styles="justify-center items-center pb-10">
         <Card direction="row" styles="bg-purple-100 mx-1">
-          <TargetControl />
+          <TargetControl target={target} handleValue={handleValue} />
         </Card>
 
         <div className="flex w-full mt-auto">
@@ -16,25 +30,13 @@ const Auto = () => {
             <h1 className="text-purple-700 font-extrabold mr-4">
               Target Volume:
             </h1>
-            <p className="font-xl text-center ">400ml</p>
+            <p className="font-xl text-center ">{target}</p>
           </Card>
           <Card direction="row" styles="bg-purple-200 mx-1 ">
             <h1 className="text-purple-700 font-extrabold mr-4">
-              Current Volume:
+              Can Fill Target:
             </h1>
-            <p className="font-xl">400ml</p>
-          </Card>
-        </div>
-        <div className="flex w-full mt-5">
-          <Card direction="row" styles="bg-purple-200 mx-1">
-            <h1 className="text-purple-700 font-extrabold mr-4">
-              Remaining Volume:
-            </h1>
-            <p className="font-xl text-center ">400ml</p>
-          </Card>
-          <Card direction="row" styles="bg-purple-200 mx-1 ">
-            <h1 className="text-purple-700 font-extrabold mr-4">Status:</h1>
-            <p className="font-xl"> Below Target</p>
+            <p className="font-xl"> {getStatus()}</p>
           </Card>
         </div>
       </Card>
