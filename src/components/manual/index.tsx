@@ -8,7 +8,7 @@ const Manual = () => {
     <PageLayout>
       <Card styles="justify-center items-center pb-10">
         <Card direction="row" styles="bg-purple-100 mx-1">
-          <TargetControl />
+          <TargetControl mode="manual" />
         </Card>
 
         <div className="flex w-full mt-auto">
