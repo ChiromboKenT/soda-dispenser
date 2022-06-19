@@ -34,7 +34,7 @@ If the installation was successful, you should be able to run the following comm
 - Make sure to be in soda-dispenser folder
 
 ```sh
-   && npm run dev
+   && yarn run dev
 ```
 
 ### Open Application
