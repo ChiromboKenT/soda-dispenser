@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Icon from '../../shared/Icon';
+import { colors } from '../../theme';
 
 const Navigation = ({
   active,
@@ -10,18 +11,23 @@ const Navigation = ({
   setActive: (index: number) => void;
 }) => {
   const menus = [
-    { name: 'Auto', icon: 'auto-outline', dis: 'translate-x-0', to: '/manual' },
     {
       name: 'Manual',
       icon: 'manual-outline',
+      dis: 'translate-x-0',
+      to: '/',
+    },
+    {
+      name: 'Auto',
+      icon: 'auto-outline',
       dis: 'translate-x-16',
       to: '/auto',
     },
   ];
 
   return (
-    <div className="bg-gray-900 pt-10 px-6 w-full">
-      <div className="flex justify-between w-full bg-white h-[4.4rem] px-6 rounded-t-xl ">
+    <div className="bg-gray-900  w-full">
+      <div className="flex justify-between w-full bg-white h-[4.4rem] px-6 rounded-t-lg shadow-shadow2 ">
         <div className="my-auto">
           <h1 className=" font-logo text-xl text-purple-800">Soda Machine</h1>
         </div>
@@ -55,7 +61,7 @@ const Navigation = ({
                     index === active && '-mt-6 text-white opacity-0'
                   }`}
                 >
-                  <Icon name={menu.icon} size="1.5rem" color="#6B21A8" />
+                  <Icon name={menu.icon} size="1.5rem" color={colors.primary} />
                 </div>
                 <p
                   className={` font-sans font-semibold text-green-700 ${

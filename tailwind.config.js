@@ -16,12 +16,19 @@ module.exports = {
       },
       animation: {
         ping: 'ping 0.7s cubic-bezier(0, 0, 0.2, 1) infinite',
+        pingStrong: 'pingStrong 0.7s cubic-bezier(0, 0, 0.2, 1) infinite',
       },
       keyframes: {
         ping: {
           '75%, 100%': {
             transform: 'scale(1.09)',
             opacity: 0.5,
+          },
+        },
+        pingStrong: {
+          '75%, 100%': {
+            transform: 'scale(1.09)',
+            opacity: 0.9,
           },
         },
       },
